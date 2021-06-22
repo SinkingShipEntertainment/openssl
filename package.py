@@ -28,8 +28,6 @@ requires = [
 ]
 
 private_build_requires = [
-    "cmake",
-    "gcc-6.3",
 ]
 
 variants = [
@@ -38,8 +36,11 @@ variants = [
 
 uuid = "repository.openssl"
 
+def pre_build_commands():
+    command("source /opt/rh/devtoolset-6/enable")
+
 def commands():
     env.PATH.prepend("{root}/bin")
-    env.LD_LIBRARY_PATH.append("{root}/lib")
+    #env.LD_LIBRARY_PATH.append("{root}/lib")
     env.LC_ALL = "en_US.UTF-8"
     env.LDFLAGS.append("-L{root}/lib -Wl,-rpath,{root}/lib")
