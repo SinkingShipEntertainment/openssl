@@ -40,6 +40,7 @@ def pre_build_commands():
     command("source /opt/rh/devtoolset-6/enable")
 
 def commands():
+    env.OPENSSL_ROOT_DIR = "{root}"
     env.PATH.prepend("{root}/bin")
     #env.LD_LIBRARY_PATH.append("{root}/lib")
     env.LC_ALL = "en_US.UTF-8"
